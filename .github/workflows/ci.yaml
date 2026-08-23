@@ -1,4 +1,4 @@
-name: Hello GitHub Actions
+name: CI Pipeline
 
 on:
   push:
@@ -6,9 +6,18 @@ on:
       - master
 
 jobs:
-  hello:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say Hello
-        run: echo "Hello from GitHub Actions"
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Show Current Directory
+        run: pwd
+
+      - name: List Files
+        run: ls -la
+
+      - name: Show README
+        run: cat README.md
